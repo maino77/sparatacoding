@@ -1,0 +1,13 @@
+.wrap {
+    width: 800px;
+    margin-right: auto;
+}
+
+.main-logo {
+    width: 500px;
+    height: 200px;
+    margin: 50px auto;
+
+    background-size: cover;
+    background-color: green;
+}
