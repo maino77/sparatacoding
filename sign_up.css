@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: GmarketSansLight;
+}
+.form {
+    width: 400px;
+    height: 400px;
+
+    background-color: antiquewhite;
+
+    margin: auto;
+}
+.title {
+    width: 160px;
+    height: 60px;
+
+    margin: 0px auto;
+    padding-top: 15px;
+    font-size: 40px;
+
+}
+.form-row {
+    width: 300px;
+    height: 150px;
+
+    margin: auto;
+}
+.form-group-email {
+    width: 300px;
+    height: 25px;
+
+    margin: 20px auto 10px auto;
+}
+.form-group-pw {
+    width: 300px;
+    height: 25px;
+
+    margin:50px auto 10px auto;
+}
+.p {
+    margin: 0px auto 0px auto;
+}
+.p-pw {
+    margin: 0px auto 0px auto;
+}
+.form-control {
+    margin: 10px auto 0px auto;
+    height: 30px;
+
+    border-radius: 8px;
+    border-width: thin;
+    border-color: #bfbfbf;
+    border-style: solid;
+
+    width: 280px;
+}
+.form-control-pw {
+    margin: 10px auto 0px auto;
+    height: 30px;
+
+    border-radius: 8px;
+    border-width: thin;
+    border-color: #bfbfbf;
+    border-style: solid;
+
+    width: 280px;
+}
+.form-group {
+    margin: 0px auto 10px auto;
+}
+.form-check {
+    margin: 0px 80px auto 45px;
+}
+.btn {
+    width: 80px;
+    height: 35px;
+
+    margin: 40px auto auto 150px;
+
+    border-radius: 8px;
+    border-width: thin;
+    border-color: #bfbfbf;
+    border-style: solid;
+
+}
