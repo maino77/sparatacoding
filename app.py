@@ -1,5 +1,5 @@
-from flask import Flask, request, render_template, jsonify
-import gridfs
+from flask import Flask, request, render_template, jsonify, session, redirect, url_for
+
 
 app = Flask(__name__)
 
@@ -11,22 +11,69 @@ client = MongoClient('localhost', 27017)
 db = client.dbsparta
 
 
-@app.route("/")
-def main():
-    #db 이미지 저장
-    doc = {
-        'id': '온도',
-        'img_url': 'https://raw.githubusercontent.com/maino77/SparataWeather/99c4709d7a883d6fb7915ce8dc9733dfd6988297/img/extra_1.png',
-    }
-    db.photo.insert_one(doc)
-    return render_template('index.html')
+
+@app.route('/', methods=['GET', 'POST'])
+def home():
+	""" Session control"""
+	if not session.get('logged_in'):
+		return render_template('index.html')
+	else:
+		if request.method == 'POST':
+			username = request.form['username']
+			return render_template('index.html', username)
+		return render_template('index.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+	"""Login Form"""
+	if request.method == 'GET':
+		return render_template('login.html')
+	else:
+		name = request.form['username']
+		passwd = request.form['password']
+		try:
+			#유저네임으로 찾기
+			#data = User.query.filter_by(username=name, password=passw).first()
+			data = db.users.find_one({'name': name},{'_id': False})
+			if data is not None:
+				session['logged_in'] = True
+				return redirect(url_for('home')) #home.html로 가기
+			else:
+				return 'Dont Login'
+		except:
+			return "Dont Login"
 
 
-@app.route("/showPhoto", methods=['GET'])
-def show():
-    #온도 조건 받는 부분 추가 ondo = request.args.get('')
-    clothes = list(db.photo.find({'id': '온도'}, {'_id': False}))
-    return jsonify({'all_clothes': clothes})
+@app.route('/register/', methods=['GET', 'POST'])
+def register():
+	"""Register Form"""
+	if request.method == 'POST':
+		username = request.form['username']
+		password = request.form['password']
+		# 테이블 생성
+		doc = {
+			"id": 1,
+			"name": username,
+			"passd": password
+		}
+		db.users.insert_one(doc)
+		#new_user = User(, password=request.form['password'])
+		new_user = doc
+		db.session.add(new_user)
+		db.session.commit()
+		return render_template('login.html')
+	return render_template('register.html')
+
+
+@app.route('/logout')
+def logout():
+	"""Logout Form"""
+	session['logged_in'] = False
+	return redirect(url_for('home'))
+
+#@app.route('/findpassd')
+#def findpassd():
+
 
 
 
