@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" id="backimg">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/mediaquery.css">
+    <link rel="stylesheet" href="./css/login.css">
+
+    <!-- 날씨 아이콘 css -->
+    <link rel="stylesheet" href="./css/weather-icons-wind.css">
+    <link rel="stylesheet" href="./css/weather-icons-wind.min.css">
+    <link rel="stylesheet" href="./css/weather-icons.css">
+    <link rel="stylesheet" href="./css/weather-icons.min.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <!-- 왼쪽  -->
+    <div class="temp-side" id="str_color">
+        <span class="now-temp" id="cur_temp_info"></span>
+        <span class="now-city" id="city_info"></span>
+        <!-- icon 양식 -->
+        <!-- <i class="wi wi-snowflake-cold"></i> -->
+        <span class="now-icon"><i id="weather_icon_info" class="now_weather_info"></i></span>
+
+        <!-- Openweathermap API 아이콘 출력 코드(참고용) -->
+        <!-- <span id="icon"><img id="wicon" src="" alt="Weather icon"></span> -->
+    </div>
+    <!-- 오른쪽 -->
+    <div class="blackbox">
+        <div class="comment-side">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/backup_folder/index.html">옷차림</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/backup_folder/comment.html">이야기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/backup_folder/login.html">로그인</a>
+                </li>
+            </ul>
+
+            <form class="form">
+                <h1 class="title">로그인</h1>
+                <div class="form-group">
+                    <label for="exampleInputEmail1" class="email">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                           placeholder="Enter email" style="padding-left: 10px">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group-pw">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control-pw" id="exampleInputPassword1" placeholder="Password"
+                           style="padding-left: 10px">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">아이디 기억하기</label>
+                </div>
+                <div class="btn-all">
+                    <button type="submit" class="btn" onclick="alert('good')">로그인</button>
+                    <button type="button" class="btn-1" onclick="alert('hi')">회원가입</button>
+                </div>
+
+                <div class="login-api">
+                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=d860d38c992ca8bf5f07dcc3fd5122b9&redirect_uri=http://localhost:9090/member/auth/kakao/callback&response_type=code"><img
+                            src="/img/kakao_login_medium_wide.png"></a>
+                </div>
+                <div class="links">
+                    <a href="#">비밀번호를 잊어버리셨나요?</a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="./js/weather.js"></script>
+<script type="text/javascript" src="./js/date.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+/* 폰트 설정 */
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: GmarketSansLight;
+}
+
+/* 전체 form */
+.form {
+
+    width: 400px;
+    height: 400px;
+
+    margin: auto;
+}
+
+/* '로그인' 글씨 */
+.title {
+    width: 150px;
+    height: 60px;
+
+    margin: 0px auto;
+    padding-top: 15px;
+    padding-left: 30px;
+    font-size: 35px;
+}
+
+/* 이메일 그룹 */
+.form-group {
+    width: 350px;
+    height: 40px;
+
+    margin: 10px auto auto auto;
+}
+
+/* 이메일 글씨 */
+.email {
+    margin-top: 9px;
+}
+
+/* 패스워드 그룹 */
+.form-group-pw {
+    width: 345px;
+    height: 40px;
+
+    margin: 30px auto 10px 25px;
+}
+
+/* 이메일 입력창 */
+.form-control {
+    width: 260px;
+    height: 30px;
+
+    border-radius: 8px;
+    border-width: thin;
+    border-color: #bfbfbf;
+    border-style: solid;
+
+    margin-left: 5px;
+    margin-top: 0px;
+    padding: 3px;
+}
+
+/* 가운데 글귀 */
+.form-text {
+    font-size: small;
+    margin-top: 0px;
+    padding-top: 3px;
+}
+
+/* 패스워드 입력 */
+.form-control-pw {
+    width: 215px;
+    height: 30px;
+
+    border-radius: 8px;
+    border-width: thin;
+    border-color: #bfbfbf;
+    border-style: solid;
+
+    margin-left: 5px;
+    padding: 3px;
+    background-color: inherit;
+}
+/* 체크박스 */
+.form-check {
+    width: 200px;
+    height: 30px;
+
+    margin: 10px auto 10px 24px;
+
+}
+.form-check-label {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    float: left;
+}
+.form-check-input {
+    float: left;
+    margin-bottom: 0px;
+    margin-top: 5px;
+
+}
+
+/* 버튼들 */
+.btn-all {
+    width: 350px;
+    height: 40px;
+
+    margin: auto 65px;
+
+}
+.btn-all :hover {
+    background-color: #c7c7c7;
+}
+
+.btn {
+    width: 100px;
+    height: 40px;
+
+    border-radius: 8px;
+    border-width: thin;
+    border-color: #D1D1D1;
+    border-style: solid;
+
+    margin-left: 50px;
+    margin-bottom: 15px;
+
+    float: left;
+}
+.btn-1 {
+    width: 100px;
+    height: 40px;
+
+    border-radius: 8px;
+    border-width: thin;
+    border-color: #D1D1D1;
+    border-style: solid;
+
+    margin-left: 20px;
+    margin-bottom: 15px;
+
+    float: left;
+    background-color: inherit;
+}
+
+/* submite 버튼 */
+
+.login-api {
+
+    margin: 10px auto auto 40px;
+}
+/*카카오 로그인 이미지 파일 간격조정 */
+
+.links {
+    width: 250px;
+    height: 30px;
+
+    margin: 5px 60px auto auto;
+}
+
