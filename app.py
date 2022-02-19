@@ -12,68 +12,34 @@ db = client.dbsparta
 
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def home():
-	""" Session control"""
-	if not session.get('logged_in'):
-		return render_template('index.html')
-	else:
-		if request.method == 'POST':
-			username = request.form['username']
-			return render_template('index.html', username)
-		return render_template('index.html')
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-	"""Login Form"""
-	if request.method == 'GET':
-		return render_template('login.html')
-	else:
-		name = request.form['username']
-		passwd = request.form['password']
-		try:
-			#유저네임으로 찾기
-			#data = User.query.filter_by(username=name, password=passw).first()
-			data = db.users.find_one({'name': name},{'_id': False})
-			if data is not None:
-				session['logged_in'] = True
-				return redirect(url_for('home')) #home.html로 가기
-			else:
-				return 'Dont Login'
-		except:
-			return "Dont Login"
+	##로그인 기능이 들어오면 수정되어야할 부분
+	return render_template('comment.html')
 
 
-@app.route('/register/', methods=['GET', 'POST'])
-def register():
-	"""Register Form"""
-	if request.method == 'POST':
-		username = request.form['username']
-		password = request.form['password']
-		# 테이블 생성
-		doc = {
-			"id": 1,
-			"name": username,
-			"passd": password
-		}
-		db.users.insert_one(doc)
-		#new_user = User(, password=request.form['password'])
-		new_user = doc
-		db.session.add(new_user)
-		db.session.commit()
-		return render_template('login.html')
-	return render_template('register.html')
+###### 코멘트 API  생성 ########
+@app.route('/weather/comment', methods=['POST'])
+def write_comment():
+	local_receive = request.form['local_give']
+	talk_receive = request.form['talk_give']
+	date_receive = request.form['date_give']
 
 
-@app.route('/logout')
-def logout():
-	"""Logout Form"""
-	session['logged_in'] = False
-	return redirect(url_for('home'))
+	doc = {
+		'local': local_receive,
+		'talk': talk_receive,
+		'date' : date_receive
 
-#@app.route('/findpassd')
-#def findpassd():
+	}
+	db.album.insert_one(doc)
+	return jsonify({'msg': '이 요청은 코멘트 POST'})
 
+
+@app.route('/weather/comment', methods=['GET'])
+def show_comment():
+	comments = list(db.album.find({}, {'_id':False}))
+	return jsonify({'all_comments': comments})
 
 
 
