@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        .mytitle {
+            width: 300px;
+            height: 200px;
+
+            color: white;
+            text-align: center;
+
+            background-image: url("https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=850&q=80");
+            background-size: cover;
+            background-position: center;
+
+            border-radius: 10px;
+
+            padding-top: 20px;
+        }
+        .wrap {
+            width: 300px;
+            margin: auto;
+        }
+        .mybtn {
+            width: 100px;
+            margin: auto;
+            display: block;
+        }
+        .ID {
+            text-align: center;
+        }
+
+    </style>
+    <script>
+        // ['쿠키'라는 개념에 대해 알아봅시다] -> 브라우저에 저장되어있는 정보
+        // 로그인을 구현하면, 반드시 쿠키라는 개념을 사용합니다.
+        // 페이지에 관계없이 브라우저에 임시로 저장되는 정보입니다. 키:밸류 형태(딕셔너리 형태)로 저장됩니다.
+        // 쿠키가 있기 때문에, 한번 로그인하면 네이버에서 다시 로그인할 필요가 없는 것입니다.
+        // 브라우저를 닫으면 자동 삭제되게 하거나, 일정 시간이 지나면 삭제되게 할 수 있습니다.
+        function login() {
+            let id = $('#id').val();
+            let pw = $('#pw').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/api/login",
+                data: {id_give: id, pw_give: pw},
+
+                success: function (response) {
+                    if (response['result'] == 'success') {
+                        // 로그인이 정상적으로 되면, 토큰을 받아옵니다.
+                        // 이 토큰을 mytoken이라는 키 값으로 쿠키에 저장합니다.
+
+                $.cookie('mytoken', response['token']);
+
+                        alert('로그인 완료!')
+                        window.location.href = '/login_success.html'
+                    } else {
+                        // 로그인이 안되면 에러메시지를 띄웁니다.
+                        alert(response['msg'])
+                        window.location.replace('login.html')
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="mytitle">
+            <h1>로그인 페이지</h1>
+            <h5>아이디, 패스워드를 입력해주세요</h5>
+        </div>
+
+        <p class="ID">ID: <input type="text" id="id"/></p>
+        <p class="ID">PW: <input type="text" id="pw"/></p>
+        <button class="mybtn" onclick="login()">로그인하기</button>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+</body>
+</html>
